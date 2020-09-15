@@ -1,16 +1,55 @@
 ---
-title: "https://github.com/Jiaying-Ning/p8105_hw1_jn2761.git"
+title: "HW1"
 author: "jiaying Ning"
 date: "9/15/2020"
-output: pdf_document
+output: github_document
 ---
 
-
+This is my solution to HW1
 
 *Note*
 
--1.meaningful variable / object names
+1.meaningful variable / object names
 2.readable code (one command per line; adequate whitespace and indentation; etc)
 3.clearly-written text to explain code and results
 4.a lack of superfluous code (no unused variables are defined; no extra library calls; ect)
 
+```{r install package}
+library(tidyverse)
+```
+
+## problem 1
+
+```{r Problem 1}
+
+#Creating tables that contain a random sample of size 10 from a standard Normal distribution, a logical vector indicating whether elements of the sample are greater than 0,a character vector of length 10,a factor vector of length 10, with 3 different factor “levels”
+Problem1_df =  tibble(
+  vec1 = rnorm(10),
+  vec2 = vec1 > 0,
+  vec3 = c("a","b","c","d","e","f","g","h","i","j"),
+  vec4 = factor(c("low","low","low","Med","Med","Med","Med","High","High","High"))
+  )
+
+```
+Taking means for each vector
+
+```{r problem 1 mean}
+mean(pull(Problem1_df,vec1))
+mean(pull(Problem1_df,vec2))
+mean(pull(Problem1_df,vec3))
+mean(pull(Problem1_df,vec4))
+```
+I can take mean of numerical and logical number, but not character or factor.
+
+
+```{r}
+as.numeric(pull(Problem1_df,vec1))
+as.numeric(pull(Problem1_df,vec2))
+as.numeric(pull(Problem1_df,vec3))
+as.numeric(pull(Problem1_df,vec4))
+
+as.numeric(pull(Problem1_df,vec2))*pull(Problem1_df,vec1)
+
+```
+
+## problem 2
