@@ -1,0 +1,16 @@
+---
+title: "https://github.com/Jiaying-Ning/p8105_hw1_jn2761.git"
+author: "jiaying Ning"
+date: "9/15/2020"
+output: pdf_document
+---
+
+
+
+*Note*
+
+-1.meaningful variable / object names
+2.readable code (one command per line; adequate whitespace and indentation; etc)
+3.clearly-written text to explain code and results
+4.a lack of superfluous code (no unused variables are defined; no extra library calls; ect)
+
