@@ -41,15 +41,46 @@ mean(pull(Problem1_df,vec4))
 ```
 I can take mean of numerical and logical number, but not character or factor.
 
-
+applies the as.numeric function to the logical, character, and factor variables 
 ```{r}
 as.numeric(pull(Problem1_df,vec1))
 as.numeric(pull(Problem1_df,vec2))
 as.numeric(pull(Problem1_df,vec3))
 as.numeric(pull(Problem1_df,vec4))
+```
 
+
+
+convert the logical vector to numeric, and multiply the random sample by the result
+convert the logical vector to a factor, and multiply the random sample by the result
+convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
+
+```{r}
 as.numeric(pull(Problem1_df,vec2))*pull(Problem1_df,vec1)
+as.factor(pull(Problem1_df,vec2))*pull(Problem1_df,vec1)
+as.numeric(as.factor(pull(Problem1_df,vec2)))*pull(Problem1_df,vec1)
 
 ```
 
+
+
 ## problem 2
+
+
+load the penguins dataset
+```{r import data}
+data("penguins", package = "palmerpenguins")
+```
+
+
+There are `r ncol(penguins)` variables in the dataset "penguins" they are `r variable.names(penguins)`. The data contains total of `r nrow(penguins)` observations. The mean flipper length is `r mean(pull(penguins,flipper_length_mm))`
+
+Below is a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable
+
+```{r scatterplot}
+
+ggplot(data=penguins,mapping=aes(bill_length_mm,flipper_length_mm)) + geom_point(data=penguins, aes(bill_length_mm,species),colour = "salmon")
+ggsave("scatter_plot.pdf", height = 4, width = 6)
+
+```
+
