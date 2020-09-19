@@ -20,6 +20,7 @@ library(tidyverse)
 
 ## problem 1
 
+For problem 1, I start off by creating tables that contain a random sample of size 10 from a standard Normal distribution, a logical vector indicating whether elements of the sample are greater than 0,a character vector of length 10,a factor vector of length 10, with 3 different factor “levels”
 ```{r Problem 1}
 
 #Creating tables that contain a random sample of size 10 from a standard Normal distribution, a logical vector indicating whether elements of the sample are greater than 0,a character vector of length 10,a factor vector of length 10, with 3 different factor “levels”
@@ -31,7 +32,7 @@ Problem1_df =  tibble(
   )
 
 ```
-Taking means for each vector
+Then I take means for each vector
 
 ```{r problem 1 mean}
 mean(pull(Problem1_df,vec1))
@@ -70,12 +71,27 @@ as.numeric(as.factor(pull(Problem1_df,vec2)))*pull(Problem1_df,vec1)
 load the penguins dataset
 ```{r import data}
 data("penguins", package = "palmerpenguins")
+x= na.omit(pull(penguins,flipper_length_mm))
+
+
 ```
 
 
-There are `r ncol(penguins)` variables in the dataset "penguins" they are `r variable.names(penguins)`. The data contains total of `r nrow(penguins)` observations. The mean flipper length is `r mean(pull(penguins,flipper_length_mm))`
+There are `r ncol(penguins)` variables in the dataset "penguins" 
+
+they are 
+
+- `r variable.names(penguins)` 
+
+with corresponding class of:
+
+- `r t(t(sapply(penguins, class)))`. 
+
+
+The data contains total of `r nrow(penguins)` observations. The mean flipper length is `r mean(x)`mm.
 
 Below is a scatterplot of flipper_length_mm (y) vs bill_length_mm (x); color points using the species variable
+I have saved the plot by using ggsave
 
 ```{r scatterplot}
 
